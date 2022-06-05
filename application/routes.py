@@ -79,7 +79,7 @@ class GenresView(Resource):
         return genres_schema.dump(genres), 200
 
 
-@directors_ns.route('<int:genre_id>')
+@genres_ns.route('/<int:genre_id>')
 class GenreView(Resource):
     def get(self, genre_id: int):
         genre = db.session.query(models.Genre).filter(models.Genre.genre_id == genre_id).first()
@@ -93,7 +93,7 @@ class DirectorsView(Resource):
         return director_schema.dump(directors), 200
 
 
-@directors_ns.route('<int:director_id>')
+@directors_ns.route('/<int:director_id>')
 class DirectorView(Resource):
     def get(self, director_id: int):
         director = db.session.query(models.Director).filter(models.Director.id == director_id).first()
